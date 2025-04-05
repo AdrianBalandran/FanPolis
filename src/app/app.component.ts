@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PaginaprinComponent } from './paginaprin/paginaprin.component';
+import { NavegadorComponent } from './navegador/navegador.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PaginaprinComponent],
+  imports: [RouterOutlet, NavegadorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
