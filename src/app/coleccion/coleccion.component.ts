@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NavegadorComponent } from "../navegador/navegador.component";
 
 @Component({
-  selector: 'app-paginaprin',
+  selector: 'app-coleccion',
   standalone: true,
   imports: [NavegadorComponent],
-  templateUrl: './paginaprin.component.html',
-  styleUrl: './paginaprin.component.css'
+  templateUrl: './coleccion.component.html',
+  styleUrl: './coleccion.component.css'
 })
-export class PaginaprinComponent {
+export class ColeccionComponent {
 
 }
