@@ -1,0 +1,73 @@
+.hero-section {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/imagenes/rmfpage.jpg'); /* Add your image path here */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-title img {
+    width: 80%;
+    max-width: 500px;
+    min-width: 200px;
+    height: auto;
+    object-fit: contain;
+  }
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.center-image {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.center-text {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+
+/* boton de sonido */
+
+.vmsonido{
+    padding: 10px;
+    background-image: url('../../assets/imagenes/portalbg2.png');
+    border-radius: 50%;
+    display: grid;
+    justify-items: left;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.music-control{
+    background-color: transparent;
+    border-color: transparent;
+}

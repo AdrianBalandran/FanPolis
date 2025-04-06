@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavegadorComponent } from "../navegador/navegador.component";
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-paginaprin',
@@ -10,5 +11,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './paginaprin.component.css'
 })
 export class PaginaprinComponent {
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle('FanPolis | Home'); 
+  }
 
 }

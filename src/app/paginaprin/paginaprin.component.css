@@ -40,6 +40,14 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.hero-title img {
+  width: 80%;
+  max-width: 500px;
+  min-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
 .hero-button {
   position: relative;
   padding: 0.75rem 2rem;

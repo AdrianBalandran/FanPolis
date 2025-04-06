@@ -1,1 +1,17 @@
-<p>pkpage works!</p>
+<div class="hero-section">
+    <app-navegador></app-navegador>
+  <div class="hero-image">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <div class="hero-title"><img src="../../assets/imagenes/pklogo.png" alt=""></div>
+      <p class="center-text"><b>Pokémon</b> es una franquicia que sigue las aventuras de jóvenes entrenadores que viajan por el mundo capturando, entrenando y luchando con criaturas llamadas Pokémon. La historia principal gira en torno a Ash Ketchum (o Satoshi, en Japón), un chico que sueña con convertirse en un Maestro Pokémon, y su fiel compañero Pikachu. Juntos exploran diversas regiones, hacen amigos, desafían gimnasios y se enfrentan a equipos villanos que buscan explotar a los Pokémon. Con valores como la amistad, el esfuerzo y el trabajo en equipo, la saga combina acción, emoción y un mundo lleno de criaturas únicas con habilidades especiales.</p>
+    </div>
+  </div>
+</div>
+
+<div class="vmsonido">
+    <button class="music-control" (click)="toggleMute()">
+    <i *ngIf="!isMuted" class="fa-solid fa-volume-high fa-xs"></i>
+    <i *ngIf="isMuted" class="fa-solid fa-volume-xmark fa-xs"></i>
+</button>
+</div>
