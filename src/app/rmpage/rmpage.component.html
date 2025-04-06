@@ -1,1 +1,17 @@
-<p>rmpage works!</p>
+<div class="hero-section">
+    <app-navegador></app-navegador>
+  <div class="hero-image">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <div class="hero-title"><img src="../../assets/imagenes/rmlogo.png" alt=""></div>
+      <p class="center-text"><b>Rick and Morty</b> es una serie animada de ciencia ficción y comedia negra que sigue las alocadas aventuras de Rick Sanchez, un científico brillante pero alcohólico y cínico, y su nieto Morty, un adolescente ansioso pero bondadoso. Juntos viajan por dimensiones paralelas, planetas distantes y realidades alternas, enfrentándose a criaturas extrañas, paradojas temporales y situaciones absurdas. Mientras Rick desafía cualquier lógica con su egoísmo y genialidad, Morty intenta sobrevivir al caos, aprendiendo lecciones dolorosas (y a menudo traumáticas) sobre el universo. La serie mezcla humor irreverente, crítica social y momentos inesperadamente profundos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="vmsonido">
+    <button class="music-control" (click)="toggleMute()">
+    <i *ngIf="!isMuted" class="fa-solid fa-volume-high"></i>
+    <i *ngIf="isMuted" class="fa-solid fa-volume-xmark"></i>
+</button>
+</div>

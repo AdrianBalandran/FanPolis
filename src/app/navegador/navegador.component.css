@@ -16,6 +16,11 @@
   font-size: 1.5rem;
 }
 
+.navbar-nav {
+  justify-content: center;
+  flex-grow: 1;
+}
+
 .nav-link {
   font-weight: 500;
   padding: 0.5rem 1rem;
