@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DatabaseService, PokemonListResponse } from '../database.service';
 import { FormsModule } from '@angular/forms';
 import { InfopokemonComponent } from '../infopokemon/infopokemon.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pkpage',
@@ -33,7 +34,8 @@ export class PkpageComponent {
 
   constructor(
     private titleService: Title,
-    private databaseService: DatabaseService
+    private databaseService: DatabaseService,
+    private route: ActivatedRoute
   ) {
     this.titleService.setTitle('FanPolis | Pokémon');
     this.audio.src = '../../assets/audio/pktheme.mp3';
@@ -43,6 +45,25 @@ export class PkpageComponent {
   ngOnInit() {
     this.audio.play().catch(e => console.log('Error al reproducir audio:', e));
     this.loadPokemons();
+    
+    // Verificar si hay un ID de Pokémon en los parámetros de consulta
+    this.route.queryParams.subscribe(params => {
+      if (params['pokemonId']) {
+        const pokemonId = parseInt(params['pokemonId']);
+        if (!isNaN(pokemonId)) {
+          // Seleccionar el Pokémon automáticamente
+          this.selectPokemon(pokemonId);
+          
+          // Si el Pokémon no está en la página actual, buscar en qué página está
+          const itemsPerPage = this.itemsPerPage;
+          const pageNumber = Math.ceil(pokemonId / itemsPerPage);
+          if (pageNumber !== this.currentPage) {
+            this.currentPage = pageNumber;
+            this.loadPokemons();
+          }
+        }
+      }
+    });
   }
 
   ngOnDestroy() {
