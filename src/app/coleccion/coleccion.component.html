@@ -1,2 +1,65 @@
-<app-navegador></app-navegador>
-<p>coleccion works!</p>
+<div class="coleccion-container">
+    <app-navegador></app-navegador>
+  
+  <div class="coleccion-content">
+    <h1 class="coleccion-title">Mi Colección de Pokémon</h1>
+
+    <div class="coleccion-items">
+      <div class="no-favorites" *ngIf="noFavorites">
+        <p>No tienes Pokémones en tu colección.</p>
+        <p>
+          ¡¡¡Vayamos por Pokémones!!! Da clic en la Pokébola.
+        </p>
+        <div class="cloader">
+          <div class="loader" routerLink="/pkpage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"></div>
+        </div>
+        
+      </div>
+
+      <div class="pokemon-grid" *ngIf="!noFavorites">
+        <div
+          class="pokemon-card"
+          *ngFor="let pokemon of favoritePokemons"
+          (click)="selectPokemon(pokemon.id)"
+        >
+          <div class="pokemon-image">
+            <img [src]="pokemon.imageUrl" [alt]="pokemon.name" loading="lazy" />
+          </div>
+          <div class="pokemon-info">
+            <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
+            <p class="pokemon-id">#{{ pokemon.id }}</p>
+            <div class="pokemon-types" *ngIf="pokemon.types">
+              <span
+                *ngFor="let type of pokemon.types"
+                [class]="'type-badge ' + getTypeClass(type)"
+              >
+                {{ capitalizeFirstLetter(type) }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para mostrar información detallada del Pokémon -->
+    <div
+      class="pokemon-modal"
+      *ngIf="selectedPokemonId"
+      (click)="closeModal($event)"
+    >
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-button" (click)="closeModal($event)">
+          &times;
+        </button>
+        <app-infopokemon [pokemonId]="selectedPokemonId"></app-infopokemon>
+      </div>
+    </div>
+  </div>
+
+  <div class="vmsonido">
+    <button class="music-control" (click)="toggleMute()">
+      <i *ngIf="!isMuted" class="fa-solid fa-volume-high fa-xs"></i>
+      <i *ngIf="isMuted" class="fa-solid fa-volume-xmark fa-xs"></i>
+    </button>
+  </div>
+</div>

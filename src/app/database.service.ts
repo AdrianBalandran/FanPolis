@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, Subject } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 export interface PokemonListResponse {
@@ -42,6 +42,12 @@ export class DatabaseService {
       'Content-Type': 'application/json'
     })
   };
+  
+  // Subject para notificar cambios en los favoritos
+  private favoritesChangedSubject = new Subject<void>();
+  
+  // Observable que los componentes pueden suscribirse para detectar cambios en favoritos
+  public favoritesChanged$ = this.favoritesChangedSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -92,6 +98,48 @@ export class DatabaseService {
       );
   }
 
+  // Métodos para manejar favoritos
+  addToFavorites(pokemon: any): void {
+    const favorites = this.getFavorites();
+    
+    // Verificar si ya existe en favoritos
+    if (!favorites.some(fav => fav.id === pokemon.id)) {
+      // Guardar solo la información necesaria
+      const pokemonToSave = {
+        id: pokemon.id,
+        name: pokemon.name,
+        imageUrl: pokemon.imageUrl,
+        types: pokemon.types
+      };
+      
+      favorites.push(pokemonToSave);
+      localStorage.setItem('pokemonFavorites', JSON.stringify(favorites));
+      
+      // Notificar a los componentes suscritos que hubo un cambio
+      this.favoritesChangedSubject.next();
+    }
+  }
+
+  removeFromFavorites(pokemonId: number): void {
+    let favorites = this.getFavorites();
+    favorites = favorites.filter(fav => fav.id !== pokemonId);
+    
+    localStorage.setItem('pokemonFavorites', JSON.stringify(favorites));
+    
+    // Notificar a los componentes suscritos que hubo un cambio
+    this.favoritesChangedSubject.next();
+  }
+
+  getFavorites(): any[] {
+    const favoritesJson = localStorage.getItem('pokemonFavorites');
+    return favoritesJson ? JSON.parse(favoritesJson) : [];
+  }
+
+  isFavorite(pokemonId: number): boolean {
+    const favorites = this.getFavorites();
+    return favorites.some(fav => fav.id === pokemonId);
+  }
+  
   // Manejador de errores
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Ocurrió un error desconocido';

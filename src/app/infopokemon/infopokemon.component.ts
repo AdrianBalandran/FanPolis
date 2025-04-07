@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DatabaseService } from '../database.service';
 
@@ -22,7 +22,7 @@ interface PokemonDetail {
   templateUrl: './infopokemon.component.html',
   styleUrl: './infopokemon.component.css'
 })
-export class InfopokemonComponent implements OnChanges {
+export class InfopokemonComponent implements OnChanges, OnInit {
   @Input() pokemonId: number | null = null;
   
   pokemon: PokemonDetail | null = null;
@@ -30,9 +30,15 @@ export class InfopokemonComponent implements OnChanges {
   error: string | null = null;
   audioPlaying: boolean = false;
   pokemonCry: HTMLAudioElement | null = null;
+  isFavorite: boolean = false;
   
   constructor(private databaseService: DatabaseService) {}
   
+  ngOnInit(): void {
+    // Verificar si hay favoritos guardados en localStorage
+    this.checkFavoriteStatus();
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     // Verificamos si el pokemonId ha cambiado o si se ha forzado una actualización
     if (changes['pokemonId']) {
@@ -40,6 +46,12 @@ export class InfopokemonComponent implements OnChanges {
       if (this.pokemonId) {
         this.loadPokemonDetails(this.pokemonId);
       }
+    }
+  }
+  
+  checkFavoriteStatus(): void {
+    if (this.pokemonId) {
+      this.isFavorite = this.databaseService.isFavorite(this.pokemonId);
     }
   }
   
@@ -66,6 +78,7 @@ export class InfopokemonComponent implements OnChanges {
             cries: data.cries
           };
           this.loading = false;
+          this.checkFavoriteStatus();
         },
         error: (err) => {
           this.error = 'Error al cargar los detalles del Pokémon';
@@ -117,5 +130,29 @@ export class InfopokemonComponent implements OnChanges {
           this.audioPlaying = false;
         });
     }
+  }
+
+  toggleFavorite(): void {
+    if (!this.pokemon) return;
+    
+    if (this.isFavorite) {
+      this.removeFromFavorites();
+    } else {
+      this.addToFavorites();
+    }
+  }
+
+  addToFavorites(): void {
+    if (!this.pokemon) return;
+    
+    this.databaseService.addToFavorites(this.pokemon);
+    this.isFavorite = true;
+  }
+
+  removeFromFavorites(): void {
+    if (!this.pokemon) return;
+    
+    this.databaseService.removeFromFavorites(this.pokemon.id);
+    this.isFavorite = false;
   }
 }
