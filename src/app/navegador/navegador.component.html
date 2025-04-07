@@ -14,9 +14,26 @@
           <a class="nav-link" routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Features</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light" type="submit">Search</button>
+      <form class="d-flex" role="search" (ngSubmit)="searchPokemon()">
+        <div class="position-relative w-100">
+          <input class="form-control me-2" type="search" placeholder="Buscar Pokémon" aria-label="Search" 
+                 [(ngModel)]="searchTerm" name="searchTerm" (focus)="onFocus()" (blur)="onBlur()">
+          <div *ngIf="showResults" class="search-results">
+            <div *ngIf="isSearching" class="p-3 text-center">
+              <span>Buscando...</span>
+            </div>
+            <div *ngIf="noResults && !isSearching" class="p-3 text-center">
+              <span>Este Pokémon no existe</span>
+            </div>
+            <div *ngIf="searchResults.length > 0 && !isSearching" class="search-results-list">
+              <div *ngFor="let pokemon of searchResults" class="search-result-item" (click)="viewPokemonDetails(pokemon.id)">
+                <img [src]="pokemon.imageUrl" alt="{{ pokemon.name }}" class="search-result-img">
+                <span class="search-result-name">{{ pokemon.name | titlecase }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
       </form>
     </div>
   </div>
