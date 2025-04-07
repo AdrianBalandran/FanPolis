@@ -43,6 +43,7 @@ export class PkpageComponent {
   }
 
   ngOnInit() {
+    this.audio.volume = 0.1;
     this.audio.play().catch(e => console.log('Error al reproducir audio:', e));
     this.loadPokemons();
     

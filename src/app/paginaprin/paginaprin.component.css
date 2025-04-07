@@ -20,7 +20,8 @@
   align-items: center;
   color: white;
   text-align: center;
-  width: 110%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .hero-container::before {
@@ -46,6 +47,8 @@
   min-width: 200px;
   height: auto;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 .hero-button {
