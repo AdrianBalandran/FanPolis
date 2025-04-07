@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +22,9 @@ export class NavegadorComponent {
 
   constructor(
     private databaseService: DatabaseService,
-    private router: Router
+    private router: Router,
+    private el: ElementRef,
+    private renderer: Renderer2
   ) {}
 
   searchPokemon() {
@@ -90,11 +92,27 @@ export class NavegadorComponent {
 
   viewPokemonDetails(pokemonId: number) {
     // Necesitamos encontrar una forma de pasar el ID del Pokémon seleccionado a la página de detalles
-    // Por ahora, solo navegamos a la página de Pokémon
-    this.router.navigate(['/pkpage'], { queryParams: { pokemonId: pokemonId } });
+    // Primero, navegamos a la página principal de Pokémon si no estamos ya en ella
+    if (!this.router.url.includes('/pkpage')) {
+      this.router.navigate(['/pkpage'], { queryParams: { pokemonId: pokemonId } });
+    } else {
+      // Si ya estamos en la página de Pokémon, actualizamos los parámetros de consulta
+      // Añadimos un timestamp para forzar la actualización incluso si es el mismo ID
+      this.router.navigate([], {
+        relativeTo: this.router.routerState.root.firstChild,
+        queryParams: { pokemonId: pokemonId, timestamp: new Date().getTime() },
+        queryParamsHandling: 'merge'
+      });
+    }
     // Cerramos los resultados de búsqueda
     this.showResults = false;
     this.searchTerm = '';
+    
+    // Cerramos el menú desplegable si está abierto
+    const navbarCollapse = this.el.nativeElement.querySelector('#navbarNav');
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+      this.renderer.removeClass(navbarCollapse, 'show');
+    }
   }
 
   onBlur() {
@@ -116,6 +134,15 @@ export class NavegadorComponent {
   onFocus() {
     if (this.searchTerm.trim() && this.searchResults.length > 0) {
       this.showResults = true;
+    }
+  }
+
+  toggleNavbar() {
+    const navbarCollapse = this.el.nativeElement.querySelector('#navbarNav');
+    if (navbarCollapse.classList.contains('show')) {
+      this.renderer.removeClass(navbarCollapse, 'show');
+    } else {
+      this.renderer.addClass(navbarCollapse, 'show');
     }
   }
 }
