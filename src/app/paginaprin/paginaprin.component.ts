@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
 export class PaginaprinComponent {
 
   constructor(private titleService: Title) {
-    this.titleService.setTitle('FanPolis | Home'); 
+    this.titleService.setTitle('FanPolis | Inicio'); 
   }
 
 }
