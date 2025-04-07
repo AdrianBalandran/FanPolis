@@ -34,8 +34,12 @@ export class InfopokemonComponent implements OnChanges {
   constructor(private databaseService: DatabaseService) {}
   
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['pokemonId'] && this.pokemonId) {
-      this.loadPokemonDetails(this.pokemonId);
+    // Verificamos si el pokemonId ha cambiado o si se ha forzado una actualización
+    if (changes['pokemonId']) {
+      // Siempre cargar los detalles cuando se recibe un pokemonId, incluso si es el mismo valor
+      if (this.pokemonId) {
+        this.loadPokemonDetails(this.pokemonId);
+      }
     }
   }
   
