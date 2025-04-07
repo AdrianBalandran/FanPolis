@@ -10,7 +10,7 @@ import { InfopokemonComponent } from './infopokemon/infopokemon.component';
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: PaginaprinComponent },
-  { path: 'features', component: ColeccionComponent },
+  { path: 'coleccion', component: ColeccionComponent },
   // { path: 'rampage', component: RmpageComponent},
   { path: 'pkpage', component: PkpageComponent},
   //   { path: 'pricing', component: PricingComponent },
