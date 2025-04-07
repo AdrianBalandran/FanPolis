@@ -3,6 +3,7 @@ import { PaginaprinComponent } from './paginaprin/paginaprin.component';
 import { ColeccionComponent } from './coleccion/coleccion.component';
 import { RmpageComponent } from './rmpage/rmpage.component';
 import { PkpageComponent } from './pkpage/pkpage.component';
+import { InfopokemonComponent } from './infopokemon/infopokemon.component';
 // import { FeaturesComponent } from './features/features.component';
 // import { PricingComponent } from './pricing/pricing.component';
 

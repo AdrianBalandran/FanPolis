@@ -9,6 +9,54 @@
   </div>
 </div>
 
+<!-- Sección de cards de Pokémon -->
+<div class="pokemon-container">
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="spinner"></div>
+    <p>Cargando Pokémon...</p>
+  </div>
+  
+  <div class="error-message" *ngIf="error">
+    <p>{{ error }}</p>
+    <button class="retry-button" (click)="loadPokemons()">Intentar de nuevo</button>
+  </div>
+  
+  <div class="pokemon-grid" *ngIf="!loading && !error">
+    <div class="pokemon-card" *ngFor="let pokemon of pokemonList" (click)="selectPokemon(pokemon.id)">
+      <div class="pokemon-image">
+        <img [src]="pokemon.imageUrl" [alt]="pokemon.name" loading="lazy">
+      </div>
+      <div class="pokemon-info">
+        <h3>{{ capitalizeFirstLetter(pokemon.name) }}</h3>
+        <p class="pokemon-id">#{{ pokemon.id }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal para mostrar información detallada del Pokémon -->
+  <div class="pokemon-modal" *ngIf="selectedPokemonId" (click)="closeModal($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-button" (click)="closeModal($event)">&times;</button>
+      <app-infopokemon [pokemonId]="selectedPokemonId"></app-infopokemon>
+    </div>
+  </div>
+  
+  <!-- Paginación -->
+  <div class="pagination" *ngIf="totalPages > 0">
+    <button class="page-button" [disabled]="currentPage === 1" (click)="prevPage()">
+      <i class="fa-solid fa-chevron-left"></i> Anterior
+    </button>
+    
+    <div class="page-info">
+      <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    </div>
+    
+    <button class="page-button" [disabled]="currentPage === totalPages" (click)="nextPage()">
+      Siguiente <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
 <div class="vmsonido">
     <button class="music-control" (click)="toggleMute()">
     <i *ngIf="!isMuted" class="fa-solid fa-volume-high fa-xs"></i>
