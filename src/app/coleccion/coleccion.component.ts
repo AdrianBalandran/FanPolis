@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { InfopokemonComponent } from '../infopokemon/infopokemon.component';
 import { DatabaseService } from '../database.service';
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 interface FavoritePokemon {
   id: number;
@@ -35,7 +36,8 @@ export class ColeccionComponent implements OnInit, OnDestroy {
   isMuted = false;
   selectionAudio = new Audio();
 
-  constructor(private databaseService: DatabaseService) {
+  constructor(private databaseService: DatabaseService, private titeleServide: Title) {
+    this.titeleServide.setTitle('FanPolis | Colección');
     this.audio.src = '../../assets/audio/temachill.mp3';
     this.audio.loop = true;
   }

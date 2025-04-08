@@ -74,7 +74,7 @@ export class PkpageComponent {
     private databaseService: DatabaseService,
     private route: ActivatedRoute
   ) {
-    this.titleService.setTitle('FanPolis | Pokémon');
+    this.titleService.setTitle('FanPolis | Pokédex');
     this.audio.src = '../../assets/audio/pktheme.mp3';
     this.audio.loop = true;
   }
@@ -313,6 +313,9 @@ export class PkpageComponent {
     // Guardar filtros en localStorage
     this.saveFilters();
 
+    // Siempre volver a la página 1 cuando se aplica o quita un filtro
+    this.currentPage = 1;
+
     // Aplicar filtros
     if (this.activeFilters.length > 0) {
       // Si es la primera vez que aplicamos un filtro, cargamos todos los pokémon
@@ -326,7 +329,6 @@ export class PkpageComponent {
       // Si no hay filtros activos, volvemos a la carga normal de pokémon
       this.isFiltered = false;
       this.allPokemonList = [];
-      this.currentPage = 1;
       this.loadPokemons();
     }
   }
@@ -532,10 +534,8 @@ export class PkpageComponent {
     this.totalPokemons = filtered.length;
     this.totalPages = Math.ceil(this.totalPokemons / this.itemsPerPage);
 
-    // Asegurarse de que la página actual es válida
-    if (this.currentPage > this.totalPages && this.totalPages > 0) {
-      this.currentPage = 1;
-    }
+    // Asegurarse de que siempre estamos en la página 1 cuando se aplican filtros
+    this.currentPage = 1;
 
     // Aplicar paginación a los resultados filtrados
     this.applyPagination();
