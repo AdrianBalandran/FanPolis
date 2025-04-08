@@ -307,6 +307,7 @@
   cursor: pointer;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.021);
   transition: all 0.3s;
+  z-index: 10;
 }
 
 .filter svg {
@@ -320,6 +321,152 @@
 }
 .filter:hover svg {
   fill: white;
+}
+
+/* Panel de filtros */
+.filter-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease;
+  opacity: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 5;
+}
+
+.filter-panel.active {
+  max-height: 100px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.5s ease;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.filter-option:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.filter-option.selected {
+  background-color: #ee1515;
+  color: white;
+}
+
+.filter-option i {
+  font-size: 1rem;
+}
+
+/* Panel de tipos de Pokémon */
+.types-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease;
+  opacity: 0;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 4;
+}
+
+.types-panel.active {
+  max-height: 300px;
+  opacity: 1;
+  transition: max-height 0.5s ease-in, opacity 0.5s ease;
+  overflow-y: auto;
+}
+
+.types-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 0.8rem;
+}
+
+.type-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  min-width: 100px;
+}
+
+.type-item:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.type-item.selected {
+  background-color: #ee1515;
+  color: white;
+}
+
+/* Responsive para el panel de filtros */
+@media (max-width: 768px) {
+  .filter-panel.active {
+    max-height: 200px;
+  }
+  
+  .filter-options {
+    padding: 0.8rem;
+    gap: 0.8rem;
+  }
+  
+  .filter-option {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-panel.active {
+    max-height: 300px;
+  }
+  
+  .filter-options {
+    padding: 0.6rem;
+    gap: 0.6rem;
+  }
+  
+  .filter-option {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    flex: 1 0 calc(50% - 0.6rem);
+    justify-content: center;
+  }
 }
 
 

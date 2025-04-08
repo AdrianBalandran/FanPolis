@@ -37,7 +37,33 @@ export class ColeccionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.audio.volume = 0.1;
-    this.audio.play().catch(e => console.log('Error al reproducir audio:', e));
+    // Recuperar el estado de silencio del localStorage
+    const savedMuteState = localStorage.getItem('pkpageAudioMuted');
+    if (savedMuteState !== null) {
+      this.isMuted = JSON.parse(savedMuteState);
+      this.audio.muted = this.isMuted;
+    }
+    
+    // Intentar reproducir el audio automáticamente
+    this.audio.play().catch(e => {
+      console.log('Error al reproducir audio automáticamente:', e);
+      
+      // Si falla la reproducción automática, intentar reproducir en el primer clic del usuario
+      const handleUserInteraction = () => {
+        this.audio.play().catch(err => console.log('Error al reproducir audio después de interacción:', err));
+        // Eliminar los event listeners después de la primera interacción
+        document.removeEventListener('click', handleUserInteraction);
+        document.removeEventListener('touchstart', handleUserInteraction);
+      };
+      
+      document.addEventListener('click', handleUserInteraction);
+      document.addEventListener('touchstart', handleUserInteraction);
+    });
+    
+    
+    
+    
+    
     this.loadFavoritePokemons();
     
     // Suscribirse a los cambios en favoritos
@@ -49,6 +75,9 @@ export class ColeccionComponent implements OnInit, OnDestroy {
   toggleMute() {
     this.isMuted = !this.isMuted;
     this.audio.muted = this.isMuted;
+
+     // Guardar el estado de silencio en localStorage
+     localStorage.setItem('pkpageAudioMuted', JSON.stringify(this.isMuted));
   }
   
   ngOnDestroy(): void {
