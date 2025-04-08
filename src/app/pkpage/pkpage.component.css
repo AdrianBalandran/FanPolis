@@ -1,3 +1,4 @@
+/* Contenedor principal de la sección hero con imagen de fondo */
 .hero-section {
   width: 100%;
   min-height: 500px;
@@ -5,11 +6,11 @@
   overflow: hidden;
 }
 
+/* Imagen de fondo del hero con propiedades de visualización */
 .hero-image {
   width: 100%;
   min-height: 100%;
   background-image: url('../../assets/imagenes/pkfpage.jpg');
-  /* Add your image path here */
   background-size: cover;
   background-position: center;
   position: relative;
@@ -66,6 +67,7 @@
   padding: 0 1rem;
 }
 
+/* Grid responsivo para mostrar las cards de Pokémon */
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

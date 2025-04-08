@@ -1,17 +1,21 @@
+<!-- Contenedor principal del componente -->
 <div class="pokemon-detail-container">
-  <div class="loading-spinner" *ngIf="loading">
+  <!-- Sección de carga - muestra spinner mientras se obtienen datos -->
+<div class="loading-spinner" *ngIf="loading">
     <div class="spinner"></div>
     <p>Cargando detalles del Pokémon...</p>
   </div>
 
-  <div class="error-message" *ngIf="error">
+  <!-- Sección de error - muestra mensaje y botón de reintento -->
+<div class="error-message" *ngIf="error">
     <p>{{ error }}</p>
     <button class="retry-button" (click)="loadPokemonDetails(pokemonId!)">
       Intentar de nuevo
     </button>
   </div>
 
-  <div class="pokemon-detail" *ngIf="pokemon && !loading && !error">
+  <!-- Sección principal - muestra detalles del Pokémon cuando hay datos -->
+<div class="pokemon-detail" *ngIf="pokemon && !loading && !error">
     <div class="pokemon-header">
       <h2>
         {{ capitalizeFirstLetter(pokemon.name) }}
@@ -20,7 +24,8 @@
     </div>
 
     <div class="pokemon-content">
-      <div class="pokemon-image-container">
+      <!-- Contenedor de imagen - muestra imagen, tipos y controles de audio/favoritos -->
+<div class="pokemon-image-container">
         <img
           [src]="pokemon.imageUrl"
           [alt]="pokemon.name"
@@ -93,7 +98,8 @@
         </div>
       </div>
 
-      <div class="pokemon-info-container">
+      <!-- Contenedor de información - muestra características físicas, habilidades y estadísticas -->
+<div class="pokemon-info-container">
         <div class="pokemon-physical">
           <div class="info-item">
             <span class="info-label">Altura:</span>

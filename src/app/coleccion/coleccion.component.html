@@ -1,11 +1,14 @@
+<!-- Contenedor principal del componente y barra de navegación -->
 <div class="coleccion-container">
   <app-navegador></app-navegador>
 
-  <div class="coleccion-content">
+  <!-- Contenido principal de la colección -->
+<div class="coleccion-content">
     <h1 class="coleccion-title">Mi Colección de Pokémones</h1>
 
     <div class="coleccion-items">
-      <div class="no-favorites" *ngIf="noFavorites">
+      <!-- Mensaje cuando no hay Pokémones favoritos -->
+<div class="no-favorites" *ngIf="noFavorites">
         <p>No tienes Pokémones en tu colección.</p>
         <p>¡¡¡Vayamos por Pokémones!!! Da clic en la Pokébola.</p>
         <div class="cloader">
@@ -18,7 +21,8 @@
         </div>
       </div>
 
-      <div class="pokemon-grid" *ngIf="!noFavorites">
+      <!-- Grid que muestra los Pokémones favoritos -->
+<div class="pokemon-grid" *ngIf="!noFavorites">
         <div
           class="pokemon-card"
           *ngFor="let pokemon of favoritePokemons"
@@ -45,7 +49,8 @@
   </div>
 
   <!-- Modal para mostrar información detallada del Pokémon -->
-  <div
+  <!-- Modal para mostrar detalles del Pokémon seleccionado -->
+<div
     class="pokemon-modal"
     *ngIf="selectedPokemonId"
     (click)="closeModal($event)"
@@ -58,7 +63,8 @@
     </div>
   </div>
 
-  <div class="vmsonido">
+  <!-- Control de sonido/música -->
+<div class="vmsonido">
     <button class="music-control" (click)="toggleMute()">
       <i *ngIf="!isMuted" class="fa-solid fa-volume-high fa-xs"></i>
       <i *ngIf="isMuted" class="fa-solid fa-volume-xmark fa-xs"></i>

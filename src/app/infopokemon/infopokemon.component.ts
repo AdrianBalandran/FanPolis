@@ -1,3 +1,4 @@
+
 import {
   Component,
   Input,
@@ -8,6 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { DatabaseService } from '../database.service';
 
+// Interfaz que define la estructura de datos de un Pokémon
 interface PokemonDetail {
   id: number;
   name: string;
@@ -18,9 +20,10 @@ interface PokemonDetail {
   stats: { name: string; value: number }[];
   imageUrl: string;
   sprites: any;
-  cries?: { latest: string };
+  cries?: { latest: string }; // Sonido del Pokémon (opcional)
 }
 
+// Decorador del componente con metadatos
 @Component({
   selector: 'app-infopokemon',
   standalone: true,
@@ -28,16 +31,20 @@ interface PokemonDetail {
   templateUrl: './infopokemon.component.html',
   styleUrl: './infopokemon.component.css',
 })
+// Clase principal del componente que implementa hooks de ciclo de vida
 export class InfopokemonComponent implements OnChanges, OnInit {
+  // Input que recibe el ID del Pokémon a mostrar
   @Input() pokemonId: number | null = null;
 
-  pokemon: PokemonDetail | null = null;
-  loading: boolean = false;
-  error: string | null = null;
-  audioPlaying: boolean = false;
-  pokemonCry: HTMLAudioElement | null = null;
-  isFavorite: boolean = false;
+  // Propiedades del componente
+  pokemon: PokemonDetail | null = null; // Datos del Pokémon actual
+  loading: boolean = false; // Estado de carga
+  error: string | null = null; // Mensaje de error
+  audioPlaying: boolean = false; // Estado de reproducción de audio
+  pokemonCry: HTMLAudioElement | null = null; // Elemento de audio para el grito
+  isFavorite: boolean = false; // Estado de favorito
 
+  // Inyección del servicio de base de datos
   constructor(private databaseService: DatabaseService) {}
 
   ngOnInit(): void {

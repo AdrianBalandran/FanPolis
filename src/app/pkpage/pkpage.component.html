@@ -1,3 +1,4 @@
+<!-- Sección hero con navegación y descripción de Pokémon -->
 <div class="hero-section">
   <app-navegador></app-navegador>
   <div class="hero-image">
@@ -14,7 +15,7 @@
   </div>
 </div>
 
-<!-- Numero de Pokémones disponibles -->
+<!-- Contador de Pokémones disponibles en la API -->
 <div class="numpoke">
   <div class="pokemon-counter">
     <div class="counter-icon">
@@ -27,7 +28,7 @@
   </div>
 </div>
 
-<!-- Filtro Pokémon -->
+<!-- Botón para mostrar/ocultar panel de filtros -->
 <div class="opcpokemon">
   <button title="Filtro" class="filter" (click)="toggleFilterPanel()">
     <svg viewBox="0 0 512 512" height="1em">
@@ -38,7 +39,7 @@
   </button>
 </div>
 
-<!-- Panel de filtros -->
+<!-- Panel desplegable con opciones de filtrado (orden, tipo, stats) -->
 <div class="filter-panel" [class.active]="showFilterPanel">
   <div class="filter-options">
     <div class="filter-option" [class.selected]="activeFilters.includes('ascendente')"
@@ -76,7 +77,7 @@
   </div>
 </div>
 
-<!-- Panel de tipos de Pokémon -->
+<!-- Panel desplegable con lista de tipos Pokémon para filtrar -->
 <div class="types-panel" [class.active]="showTypesList">
   <div class="types-list">
     <div class="type-item" *ngFor="let type of pokemonTypes" (click)="selectPokemonType(type)"
@@ -86,7 +87,7 @@
   </div>
 </div>
 
-<!-- Sección de cards de Pokémon -->
+<!-- Contenedor principal para la lista de Pokémon con estados de carga/error -->
 <div class="pokemon-container">
   <div class="loading-spinner" *ngIf="loading">
     <div class="spinner"></div>
@@ -110,7 +111,7 @@
     </div>
   </div>
 
-  <!-- Modal para mostrar información detallada del Pokémon -->
+  <!-- Modal que muestra detalles del Pokémon seleccionado -->
   <div class="pokemon-modal" *ngIf="selectedPokemonId" (click)="closeModal($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
       <button class="close-button" (click)="closeModal($event)">&times;</button>
@@ -118,7 +119,7 @@
     </div>
   </div>
 
-  <!-- Paginación -->
+  <!-- Controles de paginación para navegar entre páginas -->
   <div class="pagination" *ngIf="totalPages > 0">
     <button class="page-button" [disabled]="currentPage === 1" (click)="prevPage()">
       <i class="fa-solid fa-chevron-left"></i> Anterior

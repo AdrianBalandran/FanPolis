@@ -1,3 +1,4 @@
+/* Contenedor principal de la colección con imagen de fondo fija */
 .coleccion-container {
     width: 100%;
     min-height: 100vh;
@@ -12,11 +13,13 @@
     overflow-y: auto;
   }
 
+/* Contenido principal de la colección con espaciado */
 .coleccion-content {
   padding: 20px;
   margin-top: 60px;
 }
 
+/* Estilo para el título de la colección con sombra */
 .coleccion-title {
   text-align: center;
   margin: 20px 0;
@@ -25,12 +28,14 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Contenedor de items de la colección con ancho máximo */
 .coleccion-items {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Estilo para mensaje cuando no hay favoritos */
 .no-favorites {
   text-align: center;
   padding: 50px 20px;
@@ -45,6 +50,7 @@
   font-size: 1.1rem;
 }
 
+/* Grid para mostrar los pokémons en tarjetas */
 .pokemon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -52,6 +58,7 @@
   margin-top: 20px;
 }
 
+/* Estilo base para las tarjetas de pokémon con efecto hover */
 .pokemon-card {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
@@ -66,6 +73,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Contenedor para la imagen del pokémon */
 .pokemon-image {
   padding: 20px;
   background-color: rgba(240, 240, 240, 0.8);
@@ -78,6 +86,7 @@
   max-height: 150px;
 }
 
+/* Contenedor para la información del pokémon */
 .pokemon-info {
   padding: 15px;
   text-align: center;
@@ -95,6 +104,7 @@
   font-size: 0.9rem;
 }
 
+/* Contenedor para los tipos de pokémon */
 .pokemon-types {
   display: flex;
   justify-content: center;
@@ -110,7 +120,7 @@
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilos para los tipos de Pokémon */
+/* Estilos para los tipos de Pokémon (colores según tipo) */
 .type-normal { background-color: #A8A878; }
 .type-fire { background-color: #F08030; }
 .type-water { background-color: #6890F0; }
@@ -130,7 +140,7 @@
 .type-steel { background-color: #B8B8D0; }
 .type-fairy { background-color: #EE99AC; }
 
-/* Modal para detalles del Pokémon */
+/* Modal para mostrar detalles completos del pokémon */
 .pokemon-modal {
   position: fixed;
   top: 0;
@@ -172,9 +182,8 @@
   color: #e74c3c;
 }
 
-  /* boton de sonido */
-
-  .vmsonido{
+  /* Botón de control de sonido flotante */
+.vmsonido{
     padding: 14px;
     background-image: url('../../assets/imagenes/pkbg2.png');
     border-radius: 50%;
@@ -193,7 +202,7 @@
 }
 
 
-/* Loader pokeball */
+/* Animación de carga con estilo de pokebola */
 .loader {
   height: 60px;
   aspect-ratio: 1;
