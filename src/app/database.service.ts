@@ -97,6 +97,18 @@ export class DatabaseService {
         catchError(this.handleError)
       );
   }
+  
+  // Método para obtener todos los tipos de Pokémon
+  getPokemonTypes(): Observable<string[]> {
+    return this.http.get<any>(`${this.apiUrl}/type`)
+      .pipe(
+        map(response => {
+          // Extraer solo los nombres de los tipos
+          return response.results.map((type: any) => type.name);
+        }),
+        catchError(this.handleError)
+      );
+  }
 
   // Métodos para manejar favoritos
   addToFavorites(pokemon: any): void {
