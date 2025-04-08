@@ -42,19 +42,19 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Modal para mostrar información detallada del Pokémon -->
-    <div
-      class="pokemon-modal"
-      *ngIf="selectedPokemonId"
-      (click)="closeModal($event)"
-    >
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <button class="close-button" (click)="closeModal($event)">
-          &times;
-        </button>
-        <app-infopokemon [pokemonId]="selectedPokemonId"></app-infopokemon>
-      </div>
+  <!-- Modal para mostrar información detallada del Pokémon -->
+  <div
+    class="pokemon-modal"
+    *ngIf="selectedPokemonId"
+    (click)="closeModal($event)"
+  >
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="close-button" (click)="closeModal($event)">
+        &times;
+      </button>
+      <app-infopokemon [pokemonId]="selectedPokemonId"></app-infopokemon>
     </div>
   </div>
 
