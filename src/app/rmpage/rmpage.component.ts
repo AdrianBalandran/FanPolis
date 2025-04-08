@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NavegadorComponent } from "../navegador/navegador.component";
+import { NavegadorComponent } from '../navegador/navegador.component';
 import { Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [NavegadorComponent, CommonModule],
   templateUrl: './rmpage.component.html',
-  styleUrl: './rmpage.component.css'
+  styleUrl: './rmpage.component.css',
 })
 export class RmpageComponent implements OnInit, OnDestroy {
   audio = new Audio();
@@ -21,7 +21,9 @@ export class RmpageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.audio.play().catch(e => console.log('Error al reproducir audio:', e));
+    this.audio
+      .play()
+      .catch((e) => console.log('Error al reproducir audio:', e));
   }
 
   ngOnDestroy() {

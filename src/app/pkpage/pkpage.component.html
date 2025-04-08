@@ -1,10 +1,15 @@
 <div class="hero-section">
-    <app-navegador></app-navegador>
+  <app-navegador></app-navegador>
   <div class="hero-image">
     <div class="overlay"></div>
     <div class="hero-content">
-        <div class="hero-title"><img src="../../assets/imagenes/pklogo.png" alt=""></div>
-      <p class="center-text"><b>Pokémon</b> es una franquicia que sigue las aventuras de jóvenes entrenadores que viajan por el mundo capturando, entrenando y luchando con criaturas llamadas Pokémon. La historia principal gira en torno a Ash Ketchum (o Satoshi, en Japón), un chico que sueña con convertirse en un Maestro Pokémon, y su fiel compañero Pikachu. Juntos exploran diversas regiones, hacen amigos, desafían gimnasios y se enfrentan a equipos villanos que buscan explotar a los Pokémon. Con valores como la amistad, el esfuerzo y el trabajo en equipo, la saga combina acción, emoción y un mundo lleno de criaturas únicas con habilidades especiales.</p>
+      <div class="hero-title"><img src="../../assets/imagenes/pklogo.png" alt=""></div>
+      <p class="center-text"><b>Pokémon</b> es una franquicia que sigue las aventuras de jóvenes entrenadores que viajan
+        por el mundo capturando, entrenando y luchando con criaturas llamadas Pokémon. La historia principal gira en
+        torno a Ash Ketchum (o Satoshi, en Japón), un chico que sueña con convertirse en un Maestro Pokémon, y su fiel
+        compañero Pikachu. Juntos exploran diversas regiones, hacen amigos, desafían gimnasios y se enfrentan a equipos
+        villanos que buscan explotar a los Pokémon. Con valores como la amistad, el esfuerzo y el trabajo en equipo, la
+        saga combina acción, emoción y un mundo lleno de criaturas únicas con habilidades especiales.</p>
     </div>
   </div>
 </div>
@@ -14,8 +19,8 @@
   <button title="Filtro" class="filter" (click)="toggleFilterPanel()">
     <svg viewBox="0 0 512 512" height="1em">
       <path
-        d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"
-      ></path>
+        d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z">
+      </path>
     </svg>
   </button>
 </div>
@@ -23,11 +28,13 @@
 <!-- Panel de filtros -->
 <div class="filter-panel" [class.active]="showFilterPanel">
   <div class="filter-options">
-    <div class="filter-option" [class.selected]="activeFilters.includes('ascendente')" (click)="applyFilter('ascendente')">
+    <div class="filter-option" [class.selected]="activeFilters.includes('ascendente')"
+      (click)="applyFilter('ascendente')">
       <i class="fa-solid fa-arrow-up-short-wide"></i>
       <span>Ascendente</span>
     </div>
-    <div class="filter-option" [class.selected]="activeFilters.includes('descendente')" (click)="applyFilter('descendente')">
+    <div class="filter-option" [class.selected]="activeFilters.includes('descendente')"
+      (click)="applyFilter('descendente')">
       <i class="fa-solid fa-arrow-down-wide-short"></i>
       <span>Descendente</span>
     </div>
@@ -48,7 +55,8 @@
       <i class="fa-solid fa-heart"></i>
       <span>Mejor HP</span>
     </div>
-    <div class="filter-option" [class.selected]="activeFilters.includes('velocidad')" (click)="applyFilter('velocidad')">
+    <div class="filter-option" [class.selected]="activeFilters.includes('velocidad')"
+      (click)="applyFilter('velocidad')">
       <i class="fa-solid fa-bolt"></i>
       <span>Mejor Velocidad</span>
     </div>
@@ -58,7 +66,8 @@
 <!-- Panel de tipos de Pokémon -->
 <div class="types-panel" [class.active]="showTypesList">
   <div class="types-list">
-    <div class="type-item" *ngFor="let type of pokemonTypes" (click)="selectPokemonType(type)" [class.selected]="selectedType === type">
+    <div class="type-item" *ngFor="let type of pokemonTypes" (click)="selectPokemonType(type)"
+      [class.selected]="selectedType === type">
       <span>{{ capitalizeFirstLetter(type) }}</span>
     </div>
   </div>
@@ -70,12 +79,12 @@
     <div class="spinner"></div>
     <p>Cargando Pokémon...</p>
   </div>
-  
+
   <div class="error-message" *ngIf="error">
     <p>{{ error }}</p>
     <button class="retry-button" (click)="loadPokemons()">Intentar de nuevo</button>
   </div>
-  
+
   <div class="pokemon-grid" *ngIf="!loading && !error">
     <div class="pokemon-card" *ngFor="let pokemon of filteredPokemonList" (click)="selectPokemon(pokemon.id)">
       <div class="pokemon-image">
@@ -87,7 +96,7 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Modal para mostrar información detallada del Pokémon -->
   <div class="pokemon-modal" *ngIf="selectedPokemonId" (click)="closeModal($event)">
     <div class="modal-content" (click)="$event.stopPropagation()">
@@ -95,17 +104,17 @@
       <app-infopokemon [pokemonId]="selectedPokemonId"></app-infopokemon>
     </div>
   </div>
-  
+
   <!-- Paginación -->
   <div class="pagination" *ngIf="totalPages > 0">
     <button class="page-button" [disabled]="currentPage === 1" (click)="prevPage()">
       <i class="fa-solid fa-chevron-left"></i> Anterior
     </button>
-    
+
     <div class="page-info">
       <span>Página {{ currentPage }} de {{ totalPages }}</span>
     </div>
-    
+
     <button class="page-button" [disabled]="currentPage === totalPages" (click)="nextPage()">
       Siguiente <i class="fa-solid fa-chevron-right"></i>
     </button>
@@ -113,8 +122,8 @@
 </div>
 
 <div class="vmsonido">
-    <button class="music-control" (click)="toggleMute()">
+  <button class="music-control" (click)="toggleMute()">
     <i *ngIf="!isMuted" class="fa-solid fa-volume-high fa-xs"></i>
     <i *ngIf="isMuted" class="fa-solid fa-volume-xmark fa-xs"></i>
-</button>
+  </button>
 </div>

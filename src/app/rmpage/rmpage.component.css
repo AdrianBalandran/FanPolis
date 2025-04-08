@@ -7,19 +7,20 @@
 .hero-image {
   width: 100%;
   height: 100%;
-  background-image: url('../../assets/imagenes/rmfpage.jpg'); /* Add your image path here */
+  background-image: url('../../assets/imagenes/rmfpage.jpg');
+  /* Add your image path here */
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
 .hero-title img {
-    width: 80%;
-    max-width: 500px;
-    min-width: 200px;
-    height: auto;
-    object-fit: contain;
-  }
+  width: 80%;
+  max-width: 500px;
+  min-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
 
 .overlay {
   position: absolute;
@@ -55,19 +56,19 @@
 
 /* boton de sonido */
 
-.vmsonido{
-    padding: 10px;
-    background-image: url('../../assets/imagenes/portalbg2.png');
-    border-radius: 50%;
-    display: grid;
-    justify-items: left;
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+.vmsonido {
+  padding: 10px;
+  background-image: url('../../assets/imagenes/portalbg2.png');
+  border-radius: 50%;
+  display: grid;
+  justify-items: left;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
-.music-control{
-    background-color: transparent;
-    border-color: transparent;
+.music-control {
+  background-color: transparent;
+  border-color: transparent;
 }

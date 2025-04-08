@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: 'home', component: PaginaprinComponent },
   { path: 'coleccion', component: ColeccionComponent },
   // { path: 'rampage', component: RmpageComponent},
-  { path: 'pkpage', component: PkpageComponent},
+  { path: 'pkpage', component: PkpageComponent },
   //   { path: 'pricing', component: PricingComponent },
   { path: '**', redirectTo: '/home' },
 ];

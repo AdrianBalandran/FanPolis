@@ -7,15 +7,15 @@
   z-index: 1030;
 }
 
-.bbuscador{
+.bbuscador {
   margin-left: 8px;
 }
 
-.cursorimg{
+.cursorimg {
   cursor: pointer;
 }
 
-.navcolor{
+.navcolor {
   background-color: transparent;
 }
 
@@ -97,7 +97,7 @@
   .navbar-collapse {
     padding-top: 1rem;
   }
-  
+
   .nav-link {
     margin: 0.25rem 0;
     padding: 0.5rem 1rem;

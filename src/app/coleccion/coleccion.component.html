@@ -1,19 +1,21 @@
 <div class="coleccion-container">
-    <app-navegador></app-navegador>
-  
+  <app-navegador></app-navegador>
+
   <div class="coleccion-content">
     <h1 class="coleccion-title">Mi Colección de Pokémones</h1>
 
     <div class="coleccion-items">
       <div class="no-favorites" *ngIf="noFavorites">
         <p>No tienes Pokémones en tu colección.</p>
-        <p>
-          ¡¡¡Vayamos por Pokémones!!! Da clic en la Pokébola.
-        </p>
+        <p>¡¡¡Vayamos por Pokémones!!! Da clic en la Pokébola.</p>
         <div class="cloader">
-          <div class="loader" routerLink="/pkpage" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"></div>
+          <div
+            class="loader"
+            routerLink="/pkpage"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          ></div>
         </div>
-        
       </div>
 
       <div class="pokemon-grid" *ngIf="!noFavorites">

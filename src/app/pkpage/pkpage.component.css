@@ -1,62 +1,63 @@
 .hero-section {
-    width: 100%;
-    min-height: 500px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .hero-image {
-    width: 100%;
-    min-height: 100%;
-    background-image: url('../../assets/imagenes/pkfpage.jpg'); /* Add your image path here */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .hero-title img {
-      width: 80%;
-      max-width: 500px;
-      min-width: 200px;
-      height: auto;
-      object-fit: contain;
-    }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .hero-content {
-    position: relative;
-    width: 90%;
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem 1rem;
-    text-align: center;
-    color: white;
-    z-index: 1;
-  }
-  
-  .center-image {
-    max-width: 200px;
-    margin-bottom: 20px;
-  }
-  
-  .center-text {
-    font-size: 1.2rem;
-    max-width: 100%;
-    margin: 1rem auto 0;
-    text-align: justify;
-    line-height: 1.6;
-  }
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  min-height: 100%;
+  background-image: url('../../assets/imagenes/pkfpage.jpg');
+  /* Add your image path here */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title img {
+  width: 80%;
+  max-width: 500px;
+  min-width: 200px;
+  height: auto;
+  object-fit: contain;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: white;
+  z-index: 1;
+}
+
+.center-image {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.center-text {
+  font-size: 1.2rem;
+  max-width: 100%;
+  margin: 1rem auto 0;
+  text-align: justify;
+  line-height: 1.6;
+}
 
 /* Estilos para la sección de Pokémon */
 .pokemon-container {
@@ -174,8 +175,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
@@ -237,21 +243,21 @@
   .pokemon-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
-  
+
   .hero-section {
     min-height: auto;
   }
-  
+
   .hero-content {
     padding: 2rem 0.5rem;
     margin: 2rem auto;
   }
-  
+
   .hero-title img {
     width: 70%;
     margin-bottom: 1rem;
   }
-  
+
   .center-text {
     font-size: 1rem;
     line-height: 1.5;
@@ -262,22 +268,22 @@
   .pokemon-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
-  
+
   .pagination {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .hero-content {
     padding: 1.5rem 0.5rem;
     margin: 1.5rem auto;
   }
-  
+
   .hero-title img {
     width: 60%;
     min-width: 150px;
   }
-  
+
   .center-text {
     font-size: 0.9rem;
     text-align: left;
@@ -286,9 +292,9 @@
 
 /* Colocación de filtro */
 
-.opcpokemon{
+.opcpokemon {
   display: flex;
-  justify-content:right;
+  justify-content: right;
   align-items: right;
   margin: 2rem 0;
   margin-right: 10px;
@@ -315,10 +321,12 @@
   fill: rgb(77, 77, 77);
   transition: all 0.3s;
 }
+
 .filter:hover {
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.11);
   background-color: rgb(59, 59, 59);
 }
+
 .filter:hover svg {
   fill: white;
 }
@@ -439,12 +447,12 @@
   .filter-panel.active {
     max-height: 200px;
   }
-  
+
   .filter-options {
     padding: 0.8rem;
     gap: 0.8rem;
   }
-  
+
   .filter-option {
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
@@ -455,12 +463,12 @@
   .filter-panel.active {
     max-height: 300px;
   }
-  
+
   .filter-options {
     padding: 0.6rem;
     gap: 0.6rem;
   }
-  
+
   .filter-option {
     padding: 0.3rem 0.6rem;
     font-size: 0.75rem;
@@ -471,22 +479,22 @@
 
 
 
-  /* boton de sonido */
+/* boton de sonido */
 
-.vmsonido{
-    padding: 14px;
-    background-image: url('../../assets/imagenes/pkbg2.png');
-    border-radius: 50%;
-    display: grid;
-    justify-items: left;
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
+.vmsonido {
+  padding: 14px;
+  background-image: url('../../assets/imagenes/pkbg2.png');
+  border-radius: 50%;
+  display: grid;
+  justify-items: left;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
 }
 
-.music-control{
-    background-color: transparent;
-    border-color: transparent;
+.music-control {
+  background-color: transparent;
+  border-color: transparent;
 }

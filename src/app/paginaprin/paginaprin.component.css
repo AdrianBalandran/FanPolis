@@ -71,7 +71,7 @@
 }
 
 
-/* Estilo de Boton */ 
+/* Estilo de Boton */
 .animated-button {
   position: relative;
   display: flex;
@@ -160,7 +160,7 @@
   opacity: 1;
 }
 
-.centrarb{
+.centrarb {
   display: flex;
   justify-content: center;
 }

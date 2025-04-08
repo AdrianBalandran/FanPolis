@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavegadorComponent } from "../navegador/navegador.component";
+import { NavegadorComponent } from '../navegador/navegador.component';
 import { CommonModule } from '@angular/common';
 import { InfopokemonComponent } from '../infopokemon/infopokemon.component';
 import { DatabaseService } from '../database.service';
@@ -15,9 +15,14 @@ interface FavoritePokemon {
 @Component({
   selector: 'app-coleccion',
   standalone: true,
-  imports: [NavegadorComponent, CommonModule, InfopokemonComponent, RouterModule],
+  imports: [
+    NavegadorComponent,
+    CommonModule,
+    InfopokemonComponent,
+    RouterModule,
+  ],
   templateUrl: './coleccion.component.html',
-  styleUrl: './coleccion.component.css'
+  styleUrl: './coleccion.component.css',
 })
 export class ColeccionComponent implements OnInit, OnDestroy {
   favoritePokemons: FavoritePokemon[] = [];
@@ -43,43 +48,47 @@ export class ColeccionComponent implements OnInit, OnDestroy {
       this.isMuted = JSON.parse(savedMuteState);
       this.audio.muted = this.isMuted;
     }
-    
+
     // Intentar reproducir el audio automáticamente
-    this.audio.play().catch(e => {
+    this.audio.play().catch((e) => {
       console.log('Error al reproducir audio automáticamente:', e);
-      
+
       // Si falla la reproducción automática, intentar reproducir en el primer clic del usuario
       const handleUserInteraction = () => {
-        this.audio.play().catch(err => console.log('Error al reproducir audio después de interacción:', err));
+        this.audio
+          .play()
+          .catch((err) =>
+            console.log(
+              'Error al reproducir audio después de interacción:',
+              err
+            )
+          );
         // Eliminar los event listeners después de la primera interacción
         document.removeEventListener('click', handleUserInteraction);
         document.removeEventListener('touchstart', handleUserInteraction);
       };
-      
+
       document.addEventListener('click', handleUserInteraction);
       document.addEventListener('touchstart', handleUserInteraction);
     });
-    
-    
-    
-    
-    
+
     this.loadFavoritePokemons();
-    
+
     // Suscribirse a los cambios en favoritos
-    this.favoritesSubscription = this.databaseService.favoritesChanged$.subscribe(() => {
-      this.loadFavoritePokemons();
-    });
+    this.favoritesSubscription =
+      this.databaseService.favoritesChanged$.subscribe(() => {
+        this.loadFavoritePokemons();
+      });
   }
 
   toggleMute() {
     this.isMuted = !this.isMuted;
     this.audio.muted = this.isMuted;
 
-     // Guardar el estado de silencio en localStorage
-     localStorage.setItem('pkpageAudioMuted', JSON.stringify(this.isMuted));
+    // Guardar el estado de silencio en localStorage
+    localStorage.setItem('pkpageAudioMuted', JSON.stringify(this.isMuted));
   }
-  
+
   ngOnDestroy(): void {
     this.audio.pause();
     // Cancelar la suscripción cuando el componente se destruye
